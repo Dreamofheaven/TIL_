@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    
+    * {box-sizing: border-box;}
+
+    .lotto_ball{
+      list-style: none;
+      display : flex;
+      flex-direction : row;
+      justify-content: space-evenly;
+    }
+
+    .ball{
+      /* border: 2px solid lightgray; */
+      border-radius: 50%;
+      background-color: white;
+      width: 50px;
+      height: 50px;      
+      padding-top: 12px;
+    }
+
+  </style>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+<body class="text-center w-50 mx-auto">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  <button class="lotto_button m-4">생성</button>
+
+  <div> 
+
+  </div>
+
+  
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+<script>
+  const buttonClass = document.querySelector('.lotto_button')
+  const results = [11, 23, 25, 30, 32, 40]
+  const bonusNumber = 42 
+  let score = ''
+  let tnf = false
+  // 숫자 목록을 1~46 리스트를 만들자.
+
+  function test() {
+    const numbers = _.range(1, 46)
+    const randomArray = _.sampleSize(numbers, 6)
+    // const randomArray = [11, 23, 25, 30, 32, 40]
+    let matchCount = 0
+
+    randomArray.forEach(number => {
+        if (results.includes(number)) {
+            matchCount += 1
+        }
+    })
+
+    
+    if (matchCount === 6) {
+        score = '1등'
+    } else if (matchCount === 5 && randomArray.includes(bonusNumber)) {
+        score = '2등'
+    } else if (matchCount === 5) {
+        score = '3등'
+    } else if (matchCount === 4) {
+        score = '4등'
+    } else if (matchCount === 3) {
+        score = '5등'
+    } else {
+        score = '꽝'
+    }
+
+    console.log(`당첨 번호 : ${results} 보너스 번호 : ${bonusNumber} 생성 번호 : ${randomArray} 등수 : ${score}`)
+  
+
+    const ulTag = document.createElement('ul')
+    const divTag = document.querySelector('div')
+    
+    
+    
+    randomArray.forEach((number) => {
+      const liTag = document.createElement('li')
+      
+      liTag.classList.add('ball')
+      liTag.style.color = 'white'
+
+      liTag.textContent = number
+        if (1 <= number && number <=10) {
+          liTag.style.backgroundColor = '#FFD700'
+        } else if (11 <= number && number <= 20) {
+          liTag.style.backgroundColor = '#4169E1'
+        } else if (21 <= number && number <= 30) {
+          liTag.style.backgroundColor = '#FF0000'
+        } else if (31 <= number && number <= 40) {
+          liTag.style.backgroundColor = 'gray'
+        } else if (41 <= number && number <= 45) {
+          liTag.style.backgroundColor = '#2E8B57'
+        } 
+
+          
+      ulTag.appendChild(liTag)
+  })    
+  
+  const liTag = document.createElement('li')
+  const bodyTag = document.querySelector('body')
+
+
+  liTag.textContent = score
+  liTag.classList.add('ball')
+  // liTag.style.backgroundColor = 'lightblue'
+  ulTag.appendChild(liTag)
+  divTag.appendChild(ulTag)
+
+  
+  ulTag.classList.add('lotto_ball')
+  }
+  
+  buttonClass.addEventListener('click', () => {
+    while (score !== '4등') {
+      test()
+    }
+  })
+
+
+  // while (score != '5등') {
+  //   // test
+  // }
+</script>
+</html>
+
+
+<!-- 로또 번호별 색깔
+1-10 노랑
+11-20 파랑
+21-30 빨강
+31-40 회색
+~45 연두색 -->
+

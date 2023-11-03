@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+  </style>
+</head>
+<body>
+
+<button class="lotto_button">생성</button>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+<script>
+  const buttonClass = document.querySelector('.lotto_button')
+  const results = [11, 23, 25, 30, 32, 40]
+  const bonusNumber = 42 
+  // 숫자 목록을 1~46 리스트를 만들자.
+
+  buttonClass.addEventListener(('click'), (event) => {
+    const numbers = _.range(1, 46)
+    const randomArray = _.sampleSize(numbers, 6)
+    // const randomArray = [11, 23, 25, 30, 32, 40]
+    let matchCount = 0
+
+    randomArray.forEach(number => {
+        if (results.includes(number)) {
+            matchCount += 1
+        }
+    })
+
+    let score = ''
+
+    if (matchCount === 6) {
+        score = '1등'
+    } else if (matchCount === 5 && randomArray.includes(bonusNumber)) {
+        score = '2등'
+    } else if (matchCount === 5) {
+        score = '3등'
+    } else if (matchCount === 4) {
+        score = '4등'
+    } else if (matchCount === 3) {
+        score = '5등'
+    } else {
+        score = '꽝'
+    }
+
+    console.log(`당첨 번호 : ${results} 보너스 번호 : ${bonusNumber} 생성 번호 : ${randomArray} 등수 : ${score}`)
+  })
+
+</script>
+</html>

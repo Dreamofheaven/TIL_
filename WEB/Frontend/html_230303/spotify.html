@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  aside {
+    float: left;
+    right: 0%;
+  }
+
+  .logo-img {
+    width: 200px;
+  }
+
+  .nav__button {
+    width: 200px;
+    height: 50px;
+    border: 1px solid #000000;
+    border-radius: 30px;
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+
+  .main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+
+</style>
+
+<body>
+  <div class="container">
+    <aside>
+      <a href="https://open.spotify.com/"><img class="logo-img" src="spotify.png" alt="spotify_logo"></a>
+      <h3>홈<br>검색하기<br>내 라이브러리</h3>
+    </aside>
+
+    <div class="main">
+      <nav>
+        <div class="nav__button nav__button1">
+          <a href="https://www.spotify.com/kr-ko/signup?forward_url=https%3A%2F%2Fopen.spotify.com%2F">
+            가입하기
+          </a>
+        </div>
+        <div class="nav__button nav__button2">
+          <a href="https://accounts.spotify.com/ko/login?continue=https%3A%2F%2Fopen.spotify.com%2F">
+            로그인하기
+          </a>
+        </div>
+      </nav>
+      <hr 2px black>
+      <article>
+        
+      </article>
+    </div>
+  </div>
+</body>
+</html>
