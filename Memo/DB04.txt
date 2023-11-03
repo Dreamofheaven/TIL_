@@ -1,0 +1,101 @@
+05. SQL - Managing Tables
+테이블 조작
+
+1. Creata A Table
+2. Delete a Table
+3. Modifying tabble..
+
+학습목표 : CREATA와 DROP을 사용하여 데이터베이스 테이블을 생성 및
+삭제 할 수 있따. 
+
+1. Create a table 
+테이블 생ㅇ성 
+# CREATE TABLE statement
+
+- 문법 :
+CREATE TABLE 테이블 이름 (
+ 각각의 필드이름 (column..) 데이터타입,
+ ....
+ constraints
+);
+
+필드는 이 데이터가 어떤 타입을 가지고 있는지에 대한 데이터타입을 정의한다. 
+파이썬에서도 타입부터 배웠던 것처럼 column에 들어가는 데이터 타입이
+무엇인지 정의 해야한다. 
+
+- PRIMARY KEY : 테이블 데이터의 식별자 
+
+프로프트 창에서 확인하랴먄
+SHOW COLUMNS FROM examples;
+
+<mysql의 데이터타입)
+숫자형 : INT, FLOAT..
+문자형 : VARCHAR, TEXT..
+날짜형 : DATE, DATETIME..
+ 
+* CHAR(50) -> 고정길이 / 50을 다 안채워도 50으로 다 채움 
+* VARCHAR(50) -> 가변길이
+
+* TEXT는 길이를 따로 지정X, 
+
+<Constraint>제약조건
+-> 데이터 무결성을 지키기 위해 데이터를 입력 받을 떄 실행하는 검사 규칙
+
+사용자가 lastName과 firstName을 입력할 떄 NULL값을 넣지 않는다.
+* 무결성 -> 정확성과 일관성을 보증
+아무 데이터나 받지 않게 하는게 중요하다.
+
+대표적인 제약조건
+-> PRIMARY KEY.
+-> NOT NULL 
+해당필드에 NULL값 지정 못하게 하는 것
+
+<AUTO_INCREMENT> attribute
+-> 데이블에 ?? 자동생성
+기본 키 필드에 사용, 고유한 숫자 부여
+시작 값은 1이며 데이터 입력 시 값을 생략하면 자동으로 1씩 증가
+이미 사용한 값을 재사용하지 않음
+기본적으로 NOT NULL 제약 조건을 포함!! 그래서 따로 NOT NULL을 안써도 됨
+
+2. DETETE A TABLE
+테이블 삭제
+# DROP TABLE statement
+- 문법 :
+DROP TABLE 테이블 이름;
+
+3. Modifying table 
+
+# ALTER TABLE statement
+
+CHANGE COLUMN은 MODIFY까지 같이 해줌 
+
+<반드시 NOT NULL 제약을 사용헤야할까?>
+
+=====================================
+
+06. SQL - Modifying Data
+DML 데이터조작 INSERT, UPDATE,
+
+1. Insert data into table
+# INSERT statement 
+테이블 레코드 삽입
+
+INSERT INTO 테이블이름 (데이터를 넣을 필드 목록 나열)
+VALUES (들어갈 값들); 
+
+2. UPDATE 수정 
+# UPDATE 테이블 이름 
+SET 어떤 컬럼 = 어떻게 바꿀지
+[WHERE
+    조건]; 
+WHERE절에서 수정 할 레코드를 지정하는 조건 작성
+WHERE절을 작성하지 않으면 모든 레코드를 수정
+그래서 WHERE절이 필요함 
+
+3. delete data from table
+# DELETE FROM 테이블이름
+[WHERE
+        ];
+
+
+

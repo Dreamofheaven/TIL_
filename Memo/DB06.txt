@@ -1,0 +1,53 @@
+여러분이 데이터베이스를 설계를 할 때,
+외래키가 어디에 있어야할까요?
+
+내가 작성한 모든 글을 조회
+1명의 유저는 게시글을 여러개 작성할 수 있다. (작성하지 않을 수도 있다.)
+1개의 게시글에는 여러 댓글이 작성될 수 있다. (자겅되지 않을 수도 있다.)
+1명의 유저는 댓글 여러개 작성할 수 있다. (작성하지 않을 수도 있다.)
+
+
+N:1 관계
+
+08. SQL - Nested Query
+
+Subquery예시
+-> 테이블1에서 가장 나이가 어린 사람을 삭제해야 한다면?
+가장 나이가 어린 사람 찾는 것 1문장
+삭제하는 1문장
+
+* 가장 나이가 어린 사람 찾기
+SELECT MIN(age)
+FROM table1;
+
+*삭제
+DELETE FROM tabel1
+WHERE age = 위에서 찾은 값;
+
+=> 이 문장을 단일 쿼리문으로
+DELETE FROM table1
+WHERE age = (
+ SELECT MIN(age) FROM table1
+); -> 중첩된 쿼리문 (Subquery)
+
+JOIN은 서로 같은 값을 참조하는 외래키의 관점이라면
+이것은 다른 것이다.
+
+<서브쿼리 특징>
+- 조건에 따라 하나 이상의 테이블에서 데이터를 검색하는 데 사용
+- SELECT, FROM, WHERE, ...
+
+<Subquery practice #1>
+
+
+<EXIST>
+
+<CASE 신택스>
+CASE 
+ WHEN   THEN
+.....
+ [ELSE ..]
+END CASE
+
+ELSE를 안쓰고 나서 WHEN에서 결과를 못찾으면 에러가 뜬다. 그래서 어지간하면 ELSE쓰는게 좋음 
+
