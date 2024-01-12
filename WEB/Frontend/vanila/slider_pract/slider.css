@@ -1,0 +1,53 @@
+/* slider.css */
+
+body {
+    margin: 0;
+}
+
+.container {
+    width: 70%;
+    margin: auto;
+    overflow: hidden; /* Important for the box-shadow to appear outside the container */
+    position: relative;
+}
+
+.slider {
+    width: 100%;
+}
+
+/* .slick-slide img {
+    width: 100%;
+    height: auto;
+} */
+
+/* .container::before,
+.container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1000px; 
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), white);
+    pointer-events: none;
+} */
+
+.container::before {
+    z-index: 1000;
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 200px; 
+    background: linear-gradient(to left, rgba(255, 255, 255, 0), white);
+}
+
+.container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 200px; 
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), white);
+}
